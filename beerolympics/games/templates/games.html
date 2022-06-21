@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock%}
+{% block title %}Match List{% endblock %}
+
+{% block content %}
+  <section>
+    <article id="my-match-table">
+      <table id="match-table">
+        <thead>
+          <tr>
+            <th class="table-header matchdate">Match date</th>
+            <th class="table-header player player-1">Player 1</th>
+            <th class="table-header character-1">Character</th>
+            <th class="table-header results">Results</th>
+            <th class="table-header character-2">Character</th>
+            <th class="table-header player player-2">Player 2</th>
+            <th class="table-header lobby">Lobby Type</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </article>
+  </section>
+{% endblock %}
