@@ -1,0 +1,44 @@
+<div class="header-container">
+  <div class="container-inner inner-header-container">
+    <a class="header-logo" href="/">
+      Beer Olympics
+    </a>
+    <nav class="header-links">
+      <ul>
+        <li>
+          <a href="">Matches</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <nav class="header-links">
+        <ul>
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'users:logout' %}"><small>Log out</small></a>
+            </li>
+            <li>
+              <a href="">{{ user }}</a>
+            </li>
+          {% else %}
+            <li>
+              <form action="https://steamcommunity.com/openid/login" method="post">
+                <input type="hidden" name="openid.identity"
+                                     value="http://specs.openid.net/auth/2.0/identifier_select" />
+                <input type="hidden" name="openid.claimed_id"
+                                     value="http://specs.openid.net/auth/2.0/identifier_select" />
+                <input type="hidden" name="openid.ns" value="http://specs.openid.net/auth/2.0" />
+                <input type="hidden" name="openid.mode" value="checkid_setup" />
+                <input type="hidden" name="openid.realm" value="{{ request.get_scheme|default:"http://" }}{{ request.get_host }}" />
+                <input type="hidden" name="openid.return_to" value="{{ request.get_scheme|default:"http://" }}{{ request.get_host }}/users/steam-landing" />
+                <button type="submit">
+                  <i class="fab fa-steam"></i>Log in
+                </button>
+              </form>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
